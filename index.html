@@ -1,26 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- ^^^^ bootstrap css ^^^^ -->
+  <link rel="stylesheet" href="app.css">
+
   <title>Frontend Mentor | Calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
+  <div class="container text-center"> <span class="col display-3">calc</span> <span class="col display-6">theme</span>
+    <span class="col display-6">1 2 3</span>
+  </div>
+
+  <div class="container text-end" id="totalBG"><span id="total">Total</span></div>
+
+  <div class="container text-center" id="gridBG">
+    <div class="container"> <span class="numpad">7</span> <span class="numpad">8</span> <span class="numpad">9</span>
+      <span class="numpad">DEL</span>
+    </div>
+    <div class="container"> <span class="numpad">4</span> <span class="numpad">5</span> <span class="numpad">6</span>
+      <span class="numpad">+</span>
+    </div>
+    <div class="container"> <span class="numpad">1</span> <span class="numpad">2</span> <span class="numpad">3</span>
+      <span class="numpad">-</span>
+    </div>
+    <div class="container"> <span class="numpad">.</span> <span class="numpad">0</span> <span class="numpad">/</span>
+      <span class="numpad">x</span>
+    </div>
+    <div class="container"> <span>RESET</span> <span>=</span></div>
+  </div>
+
+  <div class="container-sm text-center"> <span class="col display-3">calc</span> <span
+      class="col display-6">theme</span>
+    <span class="col display-6">1 2 3</span>
+
+    <div class="container text-end" id="totalBG"><span id="total">Total</span></div>
+
+    <div class="container text-center" id="gridBG">
+      <div class="container"> <span class="numpad">7</span> <span class="numpad">8</span> <span class="numpad">9</span>
+        <span class="numpad">DEL</span>
+      </div>
+      <div class="container"> <span class="numpad">4</span> <span class="numpad">5</span> <span class="numpad">6</span>
+        <span class="numpad">+</span>
+      </div>
+      <div class="container"> <span class="numpad">1</span> <span class="numpad">2</span> <span class="numpad">3</span>
+        <span class="numpad">-</span>
+      </div>
+      <div class="container"> <span class="numpad">.</span> <span class="numpad">0</span> <span class="numpad">/</span>
+        <span class="numpad">x</span>
+      </div>
+      <div class="container"> <span>RESET</span> <span>=</span></div>
+    </div>
+  </div>
 
 
-  
+
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+  integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<!-- ^^^^ bootstrap js ^^^^ -->
+
 </html>

@@ -1,0 +1,17 @@
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+body {
+    /* background-color: hsl(268, 75%, 9%) !important; */
+}
+
+.numpad {
+    /* background-color: hsl(281, 89%, 26%) !important; */
+    width: 100%;
+}
