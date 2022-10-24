@@ -7,11 +7,69 @@
     color: hsl(228, 45%, 44%);
 }
 
-body {
-    /* background-color: hsl(268, 75%, 9%) !important; */
+html {
+    /* font-family: 'League Spartan', sans-serif; doesnt work idk */
 }
 
-.numpad {
-    /* background-color: hsl(281, 89%, 26%) !important; */
-    width: 100%;
+body {
+    background-color: hsl(268, 75%, 9%) !important;
+    color: hsl(52, 100%, 62%);
+    font-family: 'League Spartan', sans-serif;
+}
+
+#titleBG {
+    padding: 40px;
+}
+
+body #totalBG {
+    background-color: hsl(268, 71%, 12%);
+    border-radius: 10px;
+    /* theme 3 */
+    padding: 40px;
+}
+
+body #gridBG {
+    background-color: hsl(268, 71%, 12%);
+    border-radius: 10px;
+    /* theme 3 */
+    padding: 40px;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* added all these lines to try and center the numbers in the bg box */
+}
+
+body .numpad {
+    background-color: hsl(268, 47%, 21%);
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 5px 0px hsl(290, 70%, 36%);
+}
+
+body .numpad:hover {
+    background-color: hsl(268, 90%, 49%);
+}
+
+body .black-text {
+    color: black;
+    background-color: hsl(176, 100%, 44%);
+    box-shadow: 0px 5px 0px hsl(177, 92%, 70%);
+}
+
+body .black-text:hover {
+    background-color: hsl(176, 100%, 57%);
+}
+
+body .white-text {
+    color: white;
+    background-color: hsl(281, 89%, 26%);
+    box-shadow: 0px 5px 0px hsl(285, 91%, 52%);
+}
+
+body .white-text:hover {
+    background-color: hsl(285, 91%, 38%);
 }

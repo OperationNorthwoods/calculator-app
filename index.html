@@ -11,56 +11,71 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <!-- ^^^^ bootstrap css ^^^^ -->
   <link rel="stylesheet" href="app.css">
+  <!-- ^^^^ my stylesheet ^^^^ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
+  <!-- ^^^^ fonts ^^^^ -->
 
   <title>Frontend Mentor | Calculator app</title>
 
 </head>
 
 <body>
-  <div class="container text-center"> <span class="col display-3">calc</span> <span class="col display-6">theme</span>
-    <span class="col display-6">1 2 3</span>
+  <div class="container text-center rounded">
+    <div class="row align-items-end" id="titleBG"> <span class="col display-4">calc</span> <span
+        class="col display-6">theme</span>
+      <span class="col display-6">1 2 3</span>
+    </div>
+    <br>
+    <div class="row display-3 text-end" id="totalBG"><span class="col" id="total">Total</span></div>
+    <br>
+    <div class="display-3" id="gridBG">
+      <div class="row"> <span class="col numpad">7</span> <span class="col numpad">8</span> <span
+          class="col numpad">9</span> <span class="col numpad white-text">DEL</span>
+      </div>
+      <div class="row"> <span class="col numpad">4</span> <span class="col numpad">5</span> <span
+          class="col numpad">6</span>
+        <span class="col numpad">+</span>
+      </div>
+      <div class="row"> <span class="col numpad">1</span> <span class="col numpad">2</span> <span
+          class="col numpad">3</span>
+        <span class="col numpad">-</span>
+      </div>
+      <div class="row"> <span class="col numpad">.</span> <span class="col numpad">0</span> <span
+          class="col numpad">/</span>
+        <span class="col numpad">x</span>
+      </div>
+      <div class="row"> <span class="col numpad white-text">RESET</span> <span class="col numpad black-text">=</span>
+      </div>
+    </div>
   </div>
 
-  <div class="container text-end" id="totalBG"><span id="total">Total</span></div>
-
-  <div class="container text-center" id="gridBG">
-    <div class="container"> <span class="numpad">7</span> <span class="numpad">8</span> <span class="numpad">9</span>
-      <span class="numpad">DEL</span>
-    </div>
-    <div class="container"> <span class="numpad">4</span> <span class="numpad">5</span> <span class="numpad">6</span>
-      <span class="numpad">+</span>
-    </div>
-    <div class="container"> <span class="numpad">1</span> <span class="numpad">2</span> <span class="numpad">3</span>
-      <span class="numpad">-</span>
-    </div>
-    <div class="container"> <span class="numpad">.</span> <span class="numpad">0</span> <span class="numpad">/</span>
-      <span class="numpad">x</span>
-    </div>
-    <div class="container"> <span>RESET</span> <span>=</span></div>
-  </div>
-
-  <div class="container-sm text-center"> <span class="col display-3">calc</span> <span
+  <!-- <div class="container-sm text-center"> <span class="col display-3">calc</span> <span
       class="col display-6">theme</span>
     <span class="col display-6">1 2 3</span>
 
     <div class="container text-end" id="totalBG"><span id="total">Total</span></div>
 
     <div class="container text-center" id="gridBG">
-      <div class="container"> <span class="numpad">7</span> <span class="numpad">8</span> <span class="numpad">9</span>
-        <span class="numpad">DEL</span>
+      <div class="row"> <span class="col numpad">7</span> <span class="col numpad">8</span> <span
+          class="col numpad">9</span> <span class="col numpad">DEL</span>
       </div>
-      <div class="container"> <span class="numpad">4</span> <span class="numpad">5</span> <span class="numpad">6</span>
-        <span class="numpad">+</span>
+      <div class="row"> <span class="col numpad">4</span> <span class="col numpad">5</span> <span
+          class="col numpad">6</span>
+        <span class="col numpad">+</span>
       </div>
-      <div class="container"> <span class="numpad">1</span> <span class="numpad">2</span> <span class="numpad">3</span>
-        <span class="numpad">-</span>
+      <div class="row"> <span class="col numpad">1</span> <span class="col numpad">2</span> <span
+          class="col numpad">3</span>
+        <span class="col numpad">-</span>
       </div>
-      <div class="container"> <span class="numpad">.</span> <span class="numpad">0</span> <span class="numpad">/</span>
-        <span class="numpad">x</span>
+      <div class="row"> <span class="col numpad">.</span> <span class="col numpad">0</span> <span
+          class="col numpad">/</span>
+        <span class="col numpad">x</span>
       </div>
-      <div class="container"> <span>RESET</span> <span>=</span></div>
+      <div class="row"> <span class="col numpad white-text">RESET</span> <span class="col numpad black-text">=</span></div>
     </div>
-  </div>
+  </div> -->
 
 
 
