@@ -1,54 +1,70 @@
 :root {
     /* theme 1 */
-    --theme1-body-bg: hsl(222, 26%, 31%);
-    --theme1-numpad-and-toggle-bg: hsl(223, 31%, 20%);
-    --theme1-screen-bg: hsl(224, 36%, 15%);
-    --theme1-text: hsl(221, 14%, 31%);
-
-    --theme1-numpad: hsl(225, 21%, 49%);
-    --theme1-numpad-shadow: hsl(224, 28%, 35%);
-    --theme1-numpad-hover: hsl();
-
-    --theme1-numpad-equals: hsl(6, 63%, 50%);
-    --theme1-numpad-equals-shadow: hsl(6, 70%, 34%);
-    --theme1-numpad-equals-hover: hsl();
-
-    --theme1-numpad-delres: hsl(30, 25%, 89%);
-    --theme1-numpad-delres-shadow: hsl(28, 16%, 65%);
-    --theme1-numpad-delres-hover: hsl();
     /* theme 2 */
-    --theme2-body-bg: hsl(0, 0%, 90%);
-    --theme1-numpad-and-toggle-bg: hsl(0, 5%, 81%);
-    --theme1-screen-bg: hsl(0, 0%, 93%);
-    --theme2-text: hsl(60, 10%, 19%);
-
-    --theme2-numpad: hsl(45, 7%, 89%);
-    --theme2-numpad-shadow: hsl(35, 11%, 61%);
-    --theme2-numpad-hover: hsl();
-
-    --theme2-numpad-equals: hsl(25, 98%, 40%);
-    --theme2-numpad-equals-shadow: hsl(25, 99%, 27%);
-    --theme2-numpad-equals-hover: hsl();
-
-    --theme2-numpad-delres: hsl(185, 42%, 37%);
-    --theme2-numpad-delres-shadow: hsl(185, 58%, 25%);
-    --theme2-numpad-delres-hover: hsl();
     /* theme 3 */
-    --theme3-body-bg: hsl(268, 75%, 9%);
-    --theme3-numpad-and-screen-and-toggle-bg: hsl(268, 71%, 12%);
-    --theme3-text: hsl(52, 100%, 62%);
+}
 
-    --theme3-numpad: hsl(268, 47%, 21%);
-    --theme3-numpad-shadow: hsl(290, 70%, 36%);
-    --theme3-numpad-hover: hsl(277, 70%, 49%);
+.theme-1 {
+    --body-bg: hsl(222, 26%, 31%);
+    --numpad-bg: hsl(223, 31%, 20%);
+    --toggle-bg: hsl(223, 31%, 20%);
+    --screen-bg: hsl(224, 36%, 15%);
+    --text: hsl(221, 14%, 31%);
+    --equals-text: white;
 
-    --theme3-numpad-equals: hsl(176, 100%, 44%);
-    --theme3-numpad-equals-shadow: hsl(177, 92%, 70%);
-    --theme3-numpad-equals-hover: hsl(176, 100%, 57%);
+    --numpad: hsl(225, 21%, 49%);
+    --numpad-shadow: hsl(224, 28%, 35%);
+    --numpad-hover: hsl();
 
-    --theme3-numpad-delres: hsl(281, 89%, 26%);
-    --theme3-numpad-delres-shadow: hsl(285, 91%, 52%);
-    --theme3-numpad-delres-hover: hsl(285, 91%, 38%);
+    --numpad-equals: hsl(6, 63%, 50%);
+    --numpad-equals-shadow: hsl(6, 70%, 34%);
+    --numpad-equals-hover: hsl();
+
+    --numpad-delres: hsl(30, 25%, 89%);
+    --numpad-delres-shadow: hsl(28, 16%, 65%);
+    --numpad-delres-hover: hsl();
+}
+
+.theme-2 {
+    --body-bg: hsl(0, 0%, 90%);
+    --numpad-bg: hsl(0, 5%, 81%);
+    --toggle-bg: hsl(0, 5%, 81%);
+    --screen-bg: hsl(0, 0%, 93%);
+    --text: hsl(60, 10%, 19%);
+    --equals-text: white;
+
+    --numpad: hsl(45, 7%, 89%);
+    --numpad-shadow: hsl(35, 11%, 61%);
+    --numpad-hover: hsl();
+
+    --numpad-equals: hsl(25, 98%, 40%);
+    --numpad-equals-shadow: hsl(25, 99%, 27%);
+    --numpad-equals-hover: hsl();
+
+    --numpad-delres: hsl(185, 42%, 37%);
+    --numpad-delres-shadow: hsl(185, 58%, 25%);
+    --numpad-delres-hover: hsl();
+}
+
+.theme-3 {
+    --body-bg: hsl(268, 75%, 9%);
+    --numpad-bg: hsl(268, 71%, 12%);
+    --toggle-bg: hsl(268, 71%, 12%);
+    --screen-bg: hsl(268, 71%, 12%);
+    --text: hsl(52, 100%, 62%);
+    --equals-text: hsl(198, 20%, 13%);
+
+    --numpad: hsl(268, 47%, 21%);
+    --numpad-shadow: hsl(290, 70%, 36%);
+    --numpad-hover: hsl(277, 70%, 49%);
+
+    --numpad-equals: hsl(176, 100%, 44%);
+    --numpad-equals-shadow: hsl(177, 92%, 70%);
+    --numpad-equals-hover: hsl(176, 100%, 57%);
+
+    --numpad-delres: hsl(281, 89%, 26%);
+    --numpad-delres-shadow: hsl(285, 91%, 52%);
+    --numpad-delres-hover: hsl(285, 91%, 38%);
 }
 
 .attribution {
@@ -65,8 +81,8 @@
 /* } */
 
 body {
-    background-color: hsl(222, 26%, 31%) !important;
-    color: hsl(221, 14%, 31%);
+    background-color: var(--body-bg) !important;
+    color: var(--text);
     font-family: 'League Spartan', sans-serif;
 }
 
@@ -75,14 +91,14 @@ body #title {
 }
 
 body #screen {
-    background-color: hsl(268, 71%, 12%);
+    background-color: var(--screen-bg);
     border-radius: 10px;
     /* theme 3 */
     padding: 40px;
 }
 
 body #grid {
-    background-color: hsl(268, 71%, 12%);
+    background-color: var(--numpad-bg);
     border-radius: 10px;
     /* theme 3 */
     padding: 40px;
@@ -94,35 +110,35 @@ body #grid {
 }
 
 body .numpad {
-    background-color: hsl(268, 47%, 21%);
+    background-color: var(--numpad);
     border-radius: 10px;
     width: 100px;
     height: 100px;
     margin: 10px;
     padding: 10px;
-    box-shadow: 0px 5px 0px hsl(290, 70%, 36%);
+    box-shadow: 0px 5px 0px var(--numpad-shadow);
 }
 
 body .numpad:hover {
-    background-color: hsl(268, 90%, 49%);
+    background-color: var(--numpad-hover);
 }
 
 body .black-text {
-    color: black;
-    background-color: hsl(176, 100%, 44%);
-    box-shadow: 0px 5px 0px hsl(177, 92%, 70%);
+    color: var(--equals-text);
+    background-color: var(--numpad-equals);
+    box-shadow: 0px 5px 0px var(--numpad-equals-shadow);
 }
 
 body .black-text:hover {
-    background-color: hsl(176, 100%, 57%);
+    background-color: var(--numpad-equals-hover);
 }
 
 body .white-text {
     color: white;
-    background-color: hsl(281, 89%, 26%);
-    box-shadow: 0px 5px 0px hsl(285, 91%, 52%);
+    background-color: var(--numpad-delres);
+    box-shadow: 0px 5px 0px var(--numpad-delres-shadow);
 }
 
 body .white-text:hover {
-    background-color: hsl(285, 91%, 38%);
+    background-color: var(--numpad-delres-hover);
 }
