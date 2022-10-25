@@ -1,3 +1,51 @@
+:root {
+    /* theme 1 */
+    --theme1-body-bg: hsl();
+    --theme1-numpad-and-screen-bg: hsl();
+
+    --theme1-numpad: hsl();
+    --theme1-numpad-shadow: hsl();
+    --theme1-numpad-hover: hsl();
+
+    --theme1-numpad-black: hsl();
+    --theme1-numpad-black-shadow: hsl();
+    --theme1-numpad-black-hover: hsl();
+
+    --theme1-numpad-white: hsl();
+    --theme1-numpad-white-shadow: hsl();
+    --theme1-numpad-white-hover: hsl();
+    /* theme 2 */
+    --theme2-body-bg: hsl();
+    --theme2-numpad-and-screen-bg: hsl();
+
+    --theme2-numpad: hsl(268, 47%, 21%);
+    --theme2-numpad-shadow: hsl();
+    --theme2-numpad-hover: hsl();
+
+    --theme2-numpad-black: hsl(%);
+    --theme2-numpad-black-shadow: hsl();
+    --theme2-numpad-black-hover: hsl();
+
+    --theme2-numpad-white: hsl();
+    --theme2-numpad-white-shadow: hsl();
+    --theme2-numpad-white-hover: hsl();
+    /* theme 3 */
+    --theme3-body-bg: hsl(268, 75%, 9%);
+    --theme3-numpad-and-screen-bg: hsl(268, 71%, 12%);
+
+    --theme3-numpad: hsl(268, 47%, 21%);
+    --theme3-numpad-shadow: hsl(290, 70%, 36%);
+    --theme3-numpad-hover: hsl(277, 70%, 49%);
+
+    --theme3-numpad-black: hsl(176, 100%, 44%);
+    --theme3-numpad-black-shadow: hsl(177, 92%, 70%);
+    --theme3-numpad-black-hover: hsl(176, 100%, 57%);
+
+    --theme3-numpad-white: hsl(281, 89%, 26%);
+    --theme3-numpad-white-shadow: hsl(285, 91%, 52%);
+    --theme3-numpad-white-hover: hsl(285, 91%, 38%);
+}
+
 .attribution {
     font-size: 11px;
     text-align: center;
@@ -7,9 +55,9 @@
     color: hsl(228, 45%, 44%);
 }
 
-html {
-    /* font-family: 'League Spartan', sans-serif; doesnt work idk */
-}
+/* html { */
+/* font-family: 'League Spartan', sans-serif; doesnt work idk */
+/* } */
 
 body {
     background-color: hsl(268, 75%, 9%) !important;
@@ -17,18 +65,18 @@ body {
     font-family: 'League Spartan', sans-serif;
 }
 
-#titleBG {
+body #title {
     padding: 40px;
 }
 
-body #totalBG {
+body #screen {
     background-color: hsl(268, 71%, 12%);
     border-radius: 10px;
     /* theme 3 */
     padding: 40px;
 }
 
-body #gridBG {
+body #grid {
     background-color: hsl(268, 71%, 12%);
     border-radius: 10px;
     /* theme 3 */
