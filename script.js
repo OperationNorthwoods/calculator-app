@@ -15,3 +15,4 @@ theme3.addEventListener('click', function (e) {
     body.className = "theme-3"
     console.log('theme 3')
 });
+
