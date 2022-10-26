@@ -15,15 +15,15 @@
 
     --numpad: hsl(30, 25%, 89%);
     --numpad-shadow: hsl(28, 16%, 65%);
-    --numpad-hover: hsl();
+    --numpad-hover: hsl(28 16% 78%);
 
     --numpad-equals: hsl(6, 63%, 50%);
     --numpad-equals-shadow: hsl(6, 70%, 34%);
-    --numpad-equals-hover: hsl();
+    --numpad-equals-hover: hsl(6, 81%, 42%);
 
     --numpad-delres: hsl(225, 21%, 49%);
     --numpad-delres-shadow: hsl(224, 28%, 35%);
-    --numpad-delres-hover: hsl();
+    --numpad-delres-hover: hsl(224 28% 42%);
 }
 
 .theme-2 {
@@ -149,3 +149,14 @@ body .delres {
 body .delres:hover {
     background-color: var(--numpad-delres-hover);
 }
+
+/* Practicing specificity, and will use this for JS */
+/*             
+span .nump
+span .numpad .number
+span .numpad .operator
+span .numpad .delres
+span .numpad .equals
+span .numpad .delres #del
+span .numpad .delres #res 
+*/
