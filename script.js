@@ -18,31 +18,38 @@ theme3.addEventListener('click', function (e) {
 
 // ============================================================ //
 
-const number = document.querySelectorAll('.number')
+const numbers = document.querySelectorAll('.number')
 const operator = document.querySelectorAll('.operator')
 const delres = document.querySelectorAll('.delres')
 const del = document.querySelector('#del')
 const res = document.querySelector('#res')
-const equals = document.querySelectorAll('.equals')
+const decimal = document.querySelector('#decimal')
+const equals = document.querySelector('#equals')
+const total = document.querySelector('#total')
 
-// number.addEventListener('click', function (e) {
-//     console.log('number')
-// });
-// operator.addEventListener('click', function (e) {
-//     console.log('operator')
-// });
-// delres.addEventListener('click', function (e) {
-//     console.log('delres')
-// });
+for (let i = 0; i < numbers.length; i++) {
+    numbers[i].addEventListener('click', function (e) {
+        console.log(`number ${i}`)
+
+    })
+};
+for (let i = 0; i < operator.length; i++) {
+    operator[i].addEventListener('click', function (e) {
+        console.log(`operator ${i}`)
+    })
+};
 del.addEventListener('click', function (e) {
     console.log('del')
 });
 res.addEventListener('click', function (e) {
     console.log('res')
 });
-// equals.addEventListener('click', function (e) {
-//     console.log('equals')
-// });
+decimal.addEventListener('click', function (e) {
+    console.log('decimal')
+});
+equals.addEventListener('click', function (e) {
+    console.log('equals')
+});
 
 //=============//
 // for (let i=1; i>10; i++) {
