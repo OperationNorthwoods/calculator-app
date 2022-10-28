@@ -26,16 +26,35 @@ const res = document.querySelector('#res')
 const decimal = document.querySelector('#decimal')
 const equals = document.querySelector('#equals')
 const total = document.querySelector('#total')
+const workingMemory = []
+const equation = []
+const solution = []
+const operand = []
+const eq = []
 
 for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener('click', function (e) {
         console.log(`number ${i}`)
-
+        if (workingMemory.length > 0) {
+            workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
+        } else {
+            workingMemory.unshift(numbers[i].innerText)
+        }
+        total.innerText = workingMemory[0]
     })
 };
 for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', function (e) {
         console.log(`operator ${i}`)
+        if (workingMemory.length > 0) {
+            if (i = 3) {
+                equation.upshift(workingMemory[0])
+                operand.upshift('*')
+            } else {
+                equation.upshift(workingMemory[0])
+                operand.upshift(operator[i].innerText)
+            }
+        } else { console.log('input numbers to ') }
     })
 };
 del.addEventListener('click', function (e) {

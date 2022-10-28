@@ -130,13 +130,13 @@ body .numpad:not(.delres, .equals) {
     color: var(--numpad-text);
 }
 
-body .equals {
+body #equals {
     color: var(--equals-text);
     background-color: var(--numpad-equals);
     box-shadow: 0px 5px 0px var(--numpad-equals-shadow);
 }
 
-body .equals:hover {
+body #equals:hover {
     background-color: var(--numpad-equals-hover);
 }
 
