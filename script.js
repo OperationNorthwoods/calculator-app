@@ -17,52 +17,86 @@ theme3.addEventListener('click', function (e) {
 });
 
 // ============================================================ //
+// premade arrays
 
-const numbers = document.querySelectorAll('.number')
-const operator = document.querySelectorAll('.operator')
-const delres = document.querySelectorAll('.delres')
-const del = document.querySelector('#del')
-const res = document.querySelector('#res')
-const decimal = document.querySelector('#decimal')
-const equals = document.querySelector('#equals')
-const total = document.querySelector('#total')
-const workingMemory = []
-const equation = []
-const solution = []
-const operand = ['+', '-', '/', '*']
-const eq = []
+const numgrid = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0']; // in order from top left button
+
+// ============================================================ //
+
+const numbers = document.querySelectorAll('.number');
+const operator = document.querySelectorAll('.operator');
+const delres = document.querySelectorAll('.delres');
+const del = document.querySelector('#del');
+const res = document.querySelector('#res');
+const decimal = document.querySelector('#decimal');
+const equals = document.querySelector('#equals');
+const total = document.querySelector('#total');
+const workingMemory = [];
+let workingEquation = ''
+const equation = [];
+const solution = [];
+const operand = ['+', '-', '/', '*'];
+const eq = [];
 let isOperandLastActive = false;
-const operandStatus = {lastActive: false; lasrAcriveOperandNum: '';}
+const operandStatus = { lastActive: false, lastActiveOperandNum: -1, };
 
-for (let i = 0; i < numbers.length; i++) {
-    numbers[i].addEventListener('click', function (e) {
-        console.log(`number ${i}`)
-        if (workingMemory.length > 0) {
-            workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
-        } else {
-            workingMemory.unshift(numbers[i].innerText)
-        }
-        total.innerText = workingMemory[0]
-    })
+function operandStatusUpdater(a) {
+    if (a = true) {
+        operandStatus.lastActive = true;
+        isOperandLastActive = true;
+    }
+    else {
+        operandStatus.lastActive = false;
+        isOperandLastActive = false;
+    }
 };
+
+if (isOperandLastActive = true) {
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener('click', function (e) {
+            console.log(`number ${i}`);
+            operandStatusUpdater(false);
+            if (workingMemory.length > 0) {
+                workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
+            } else {
+                workingMemory.unshift(numbers[i].innerText)
+            }
+            total.innerText = workingMemory[0];
+        })
+    };
+} else {
+    workingMemory = [];
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener('click', function (e) {
+            console.log(`number ${i}`);
+            operandStatusUpdater(false);
+            if (workingMemory.length > 0) {
+                workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
+            } else {
+                workingMemory.unshift(numbers[i].innerText)
+            }
+            total.innerText = workingMemory[0];
+        })
+    };
+}
 for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', function (e) {
-        console.log(`operator ${i}`)
+        console.log(`operator ${i}`);
+        operandStatusUpdater(true);
+        operandStatus.lastActiveOperandNum = parseInt(operator[i].id);
+
         if (workingMemory.length > 0) {
             let newData = 0;
-            equation.unshift(workingMemory[0])
-            equation.unshift(operand[i])
+            equation.push(workingMemory[0])
+            equation.push(operand[i])
 
-            // if (i = 0) {
-            //     equation.unshift(operand[i])
-            // } else if (i = 1) {
-            //     equation.unshift(operand[i])
-            // } else if (i = 2) {
-            //     equation.unshift(operand[i])
-            // } else if (i = 3) {
-            //     equation.unshift(operand[i])
-            // }
-        } else { console.log(`nothing to ${operand[i]} by`) }
+        } else { console.log(`nothing to ${operand[i]} by`) };
+        // for (let j = 0; j < operator.length; j++) {
+        //     if (j = i) { operator[j].id = "isTrue" }
+        //     else { operator[j].id = "" }
+        // };
+        // ^^^ this infiite loops for some reason??
+        total.innerText = "";
     })
 };
 del.addEventListener('click', function (e) {
@@ -76,6 +110,9 @@ decimal.addEventListener('click', function (e) {
 });
 equals.addEventListener('click', function (e) {
     console.log('equals')
+    for (let i = 0; i < equation.length; i++) {
+        workingEquation = equation[i]
+    }
 });
 
 //=============//

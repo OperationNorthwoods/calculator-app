@@ -70,6 +70,11 @@
     --numpad-delres-hover: hsl(285, 91%, 38%);
 }
 
+/* #istrue {
+    --numpad: white;
+    --numpad-shadow: rgb(144, 144, 144);
+} */
+
 .attribution {
     font-size: 11px;
     text-align: center;
@@ -160,3 +165,8 @@ span .numpad .equals
 span .numpad .delres #del
 span .numpad .delres #res 
 */
+
+/* body .operator #isLast {
+    background-color: var(--numpad);
+    box-shadow: 0px 5px 0px var(--numpad-shadow);
+} */
