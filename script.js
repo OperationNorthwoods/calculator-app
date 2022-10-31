@@ -29,7 +29,7 @@ const total = document.querySelector('#total')
 const workingMemory = []
 const equation = []
 const solution = []
-const operand = []
+const operand = ['+', '-', '/', '*']
 const eq = []
 
 for (let i = 0; i < numbers.length; i++) {
@@ -47,14 +47,20 @@ for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', function (e) {
         console.log(`operator ${i}`)
         if (workingMemory.length > 0) {
-            if (i = 3) {
-                equation.upshift(workingMemory[0])
-                operand.upshift('*')
-            } else {
-                equation.upshift(workingMemory[0])
-                operand.upshift(operator[i].innerText)
-            }
-        } else { console.log('input numbers to ') }
+            let newData = 0;
+            equation.unshift(workingMemory[0])
+            equation.unshift(operand[i])
+
+            // if (i = 0) {
+            //     equation.unshift(operand[i])
+            // } else if (i = 1) {
+            //     equation.unshift(operand[i])
+            // } else if (i = 2) {
+            //     equation.unshift(operand[i])
+            // } else if (i = 3) {
+            //     equation.unshift(operand[i])
+            // }
+        } else { console.log(`nothing to ${operand[i]} by`) }
     })
 };
 del.addEventListener('click', function (e) {
