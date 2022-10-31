@@ -31,6 +31,8 @@ const equation = []
 const solution = []
 const operand = ['+', '-', '/', '*']
 const eq = []
+let isOperandLastActive = false;
+const operandStatus = {lastActive: false; lasrAcriveOperandNum: '';}
 
 for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener('click', function (e) {
