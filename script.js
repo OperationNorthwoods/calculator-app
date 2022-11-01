@@ -40,8 +40,10 @@ const eq = [];
 let isOperandLastActive = false;
 const operandStatus = { lastActive: false, lastActiveOperandNum: -1, };
 
+// ============================================================ //
+
 function operandStatusUpdater(a) {
-    if (a = true) {
+    if (a === 69) {
         operandStatus.lastActive = true;
         isOperandLastActive = true;
     }
@@ -51,11 +53,21 @@ function operandStatusUpdater(a) {
     }
 };
 
-if (isOperandLastActive = true) {
+function solutionCalculation(...input) {
+    let l = input.length
+    if (l = 0) {
+        console.log('nothing to math on!')
+    } else {
+        // for i of input
+        // total.innerText = (input[0])
+    }
+};
+
+if (isOperandLastActive = false) {
     for (let i = 0; i < numbers.length; i++) {
         numbers[i].addEventListener('click', function (e) {
             console.log(`number ${i}`);
-            operandStatusUpdater(false);
+            operandStatusUpdater();
             if (workingMemory.length > 0) {
                 workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
             } else {
@@ -65,11 +77,10 @@ if (isOperandLastActive = true) {
         })
     };
 } else {
-    workingMemory = [];
     for (let i = 0; i < numbers.length; i++) {
         numbers[i].addEventListener('click', function (e) {
             console.log(`number ${i}`);
-            operandStatusUpdater(false);
+            operandStatusUpdater();
             if (workingMemory.length > 0) {
                 workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
             } else {
@@ -82,13 +93,13 @@ if (isOperandLastActive = true) {
 for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', function (e) {
         console.log(`operator ${i}`);
-        operandStatusUpdater(true);
-        operandStatus.lastActiveOperandNum = parseInt(operator[i].id);
+        operandStatusUpdater(69);
+        operandStatus.lastActiveOperandNum = i;
 
         if (workingMemory.length > 0) {
-            let newData = 0;
-            equation.push(workingMemory[0])
+            equation.push(parseInt(workingMemory[0]))
             equation.push(operand[i])
+            workingMemory.length = 0;
 
         } else { console.log(`nothing to ${operand[i]} by`) };
         // for (let j = 0; j < operator.length; j++) {
@@ -105,14 +116,14 @@ del.addEventListener('click', function (e) {
 res.addEventListener('click', function (e) {
     console.log('res')
 });
-decimal.addEventListener('click', function (e) {
-    console.log('decimal')
-});
+// decimal.addEventListener('click', function (e) {
+//     console.log('decimal')
+// });
 equals.addEventListener('click', function (e) {
     console.log('equals')
-    for (let i = 0; i < equation.length; i++) {
-        workingEquation = equation[i]
-    }
+    equation.push(parseInt(workingMemory[0]))
+    workingMemory.length = 0;
+    solutionCalculation(equation);
 });
 
 //=============//
