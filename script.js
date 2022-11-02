@@ -51,16 +51,21 @@ function operandStatusUpdater(a) {
     }
 };
 
-function plus(a, b){
-return a+b; }
-function minus(a, b){
-return a-b; }
-function times(a, b){
-return a*b; }
-function by(a, b){
-return a/b; }
+function plus(a, b) {
+    return a + b;
+}
+function minus(a, b) {
+    return a - b;
+}
+function times(a, b) {
+    return a * b;
+}
+function by(a, b) {
+    return a / b;
+}
 // see which works, above, below, or both 
-const ops = {plus: function(a,b){return a+b}, minus: function(a,b){return a-b}, times: function(a,b){return a*b}, by: function(a,b){return a/b},
+const ops = {
+    plus: function (a, b) { return a + b }, minus: function (a, b) { return a - b }, times: function (a, b) { return a * b }, by: function (a, b) { return a / b },
 }
 
 // function solutionCalculation(...input) {
