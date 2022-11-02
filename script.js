@@ -20,6 +20,7 @@ theme3.addEventListener('click', function (e) {
 // premade arrays
 
 const numgrid = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0']; // in order from top left button
+const operand = ['+', '-', '/', '*'];
 
 // ============================================================ //
 
@@ -30,84 +31,85 @@ const del = document.querySelector('#del');
 const res = document.querySelector('#res');
 const decimal = document.querySelector('#decimal');
 const equals = document.querySelector('#equals');
-const total = document.querySelector('#total');
+const screenNum = document.querySelector('#screenNum');
 const workingMemory = [];
-let workingEquation = ''
+let workingEquation = { num1: '', num2: '', ans: '' }
 const equation = [];
-const solution = [];
-const operand = ['+', '-', '/', '*'];
-const eq = [];
-let isOperandLastActive = false;
-const operandStatus = { lastActive: false, lastActiveOperandNum: -1, };
+// const solution = [];
+const operandStatus = { lastActive: false, lastActiveOperandNum: -1, firstTime: true };
+let num1 = '';
+let num2 = '';
 
 // ============================================================ //
 
 function operandStatusUpdater(a) {
     if (a === 69) {
         operandStatus.lastActive = true;
-        isOperandLastActive = true;
     }
     else {
         operandStatus.lastActive = false;
-        isOperandLastActive = false;
     }
 };
 
-function solutionCalculation(...input) {
-    let l = input.length
-    if (l = 0) {
-        console.log('nothing to math on!')
-    } else {
-        // for i of input
-        // total.innerText = (input[0])
-    }
-};
+// function solutionCalculation(...input) {
+//     let l = input.length
+//     if (l = 0) {
+//         console.log('nothing to math on!')
+//     } else {
+//         // for i of input
+//         // screenNum.innerText = (input[0])
+//     }
+// };
 
-if (isOperandLastActive = false) {
-    for (let i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener('click', function (e) {
-            console.log(`number ${i}`);
+for (let i = 0; i < numbers.length; i++) {
+    numbers[i].addEventListener('click', function (e) {
+        if (operandStatus.lastActive === false) {
+            console.log(`number ${i} & false`);
             operandStatusUpdater();
             if (workingMemory.length > 0) {
                 workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
             } else {
                 workingMemory.unshift(numbers[i].innerText)
             }
-            total.innerText = workingMemory[0];
-        })
-    };
-} else {
-    for (let i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener('click', function (e) {
-            console.log(`number ${i}`);
+            screenNum.innerText = workingMemory[0];
+        } else {
+            workingMemory.length = 0;
+            console.log(`number ${i} & true`);
             operandStatusUpdater();
-            if (workingMemory.length > 0) {
-                workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
-            } else {
-                workingMemory.unshift(numbers[i].innerText)
-            }
-            total.innerText = workingMemory[0];
-        })
-    };
-}
+            workingMemory.unshift(numbers[i].innerText)
+            screenNum.innerText = workingMemory[0];
+        }
+    });
+};
 for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', function (e) {
-        console.log(`operator ${i}`);
-        operandStatusUpdater(69);
-        operandStatus.lastActiveOperandNum = i;
+        if (operandStatus.firstTime === true) {
+            console.log(`operator ${i} & firstTime = true`);
+            operandStatusUpdater(69);
+            operandStatus.lastActiveOperandNum = i;
+            operandStatus.firstTime = false;
+            if (workingMemory.length > 0) {
+                equation.push(parseInt(workingMemory[0]))
+                equation.push(operand[i])
+                workingEquation.num1 = workingMemory[0]
+            } else { console.log(`nothing to ${operand[i]} by`) };
 
-        if (workingMemory.length > 0) {
-            equation.push(parseInt(workingMemory[0]))
-            equation.push(operand[i])
-            workingMemory.length = 0;
+        } else {
+            console.log(`operator ${i} & firstTime = false`);
+            operandStatusUpdater(69);
+            operandStatus.lastActiveOperandNum = i;
+            operandStatus.firstTime = false
 
-        } else { console.log(`nothing to ${operand[i]} by`) };
-        // for (let j = 0; j < operator.length; j++) {
-        //     if (j = i) { operator[j].id = "isTrue" }
-        //     else { operator[j].id = "" }
-        // };
-        // ^^^ this infiite loops for some reason??
-        total.innerText = "";
+            if (workingMemory.length > 0) {
+                equation.push(parseInt(workingMemory[0]))
+                equation.push(operand[i])
+                workingEquation.num2 = workingMemory[0];
+                (workingEquation.num1)(operand[i])(workingEquation.num2) = (workingEquation.ans); //errors out
+                workingEquation.num1 = workingEquation.ans;
+                workingEquation.num2 = '';
+            } else { console.log(`nothing to ${operand[i]} by`) };
+
+        }
     })
 };
 del.addEventListener('click', function (e) {
@@ -123,12 +125,5 @@ equals.addEventListener('click', function (e) {
     console.log('equals')
     equation.push(parseInt(workingMemory[0]))
     workingMemory.length = 0;
-    solutionCalculation(equation);
+    // solutionCalculation(equation);
 });
-
-//=============//
-// for (let i=1; i>10; i++) {
-//     let n = document.querySelectorAll('.number')
-//     n. //trying to iterator over all numbers and pull out the .innerText to determine their values.
-//        //I could also just set them manually and it would be easier
-// }
