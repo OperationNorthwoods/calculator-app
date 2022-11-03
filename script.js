@@ -1,3 +1,4 @@
+//theme changing
 const theme1 = document.querySelector('#theme-1')
 const theme2 = document.querySelector('#theme-2')
 const theme3 = document.querySelector('#theme-3')
@@ -36,18 +37,27 @@ const workingMemory = [];
 let workingEquation = { num1: '', num2: '', ans: '' }
 const equation = [];
 // const solution = [];
-const operandStatus = { lastActive: false, lastActiveOperandNum: -1, firstTime: true };
-let num1 = '';
-let num2 = '';
+const operandStatus = { lastActive: false, lastActiveIndex: -1, firstTime: true };
+const numberStatus = { lastActive: false, lastActiveIndex: -1, firstTime: true };
+// let num1 = '';
+// let num2 = '';
 
 // ============================================================ //
-
+// premade functions
 function operandStatusUpdater(a) {
     if (a === 69) {
         operandStatus.lastActive = true;
     }
     else {
         operandStatus.lastActive = false;
+    }
+};
+function numberStatusUpdater(a) {
+    if (a === 69) {
+        numberStatus.lastActive = true;
+    }
+    else {
+        numberStatus.lastActive = false;
     }
 };
 
@@ -64,55 +74,29 @@ function times(a, b) {
     return a * b;
 }
 
-function solve(e) {
-    if (e === op) {
-        if (operandStatus.lastActiveOperandNum === 0) {
-            return plus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 1) {
-            return minus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 2) {
-            return by(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 3) {
-            return times(workingEquation.num1, workingEquation.num2)
-        }
-    } else if (e === eq) {
-        if (operandStatus.lastActiveOperandNum === 0) {
-            return plus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 1) {
-            return minus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 2) {
-            return by(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 3) {
-            return times(workingEquation.num1, workingEquation.num2)
-        }
-    } else {
-        return console.log('solve() input not validated')
+function solve() {
+    if (operandStatus.lastActiveIndex === 0) {
+        return plus(workingEquation.num1, workingEquation.num2)
+    } else if (operandStatus.lastActiveIndex === 1) {
+        return minus(workingEquation.num1, workingEquation.num2)
+    } else if (operandStatus.lastActiveIndex === 2) {
+        return by(workingEquation.num1, workingEquation.num2)
+    } else if (operandStatus.lastActiveIndex === 3) {
+        return times(workingEquation.num1, workingEquation.num2)
     }
-
 }
 
-const ops1 = [plus(), minus(), times(), by()]
-
-// see which works, above, below, or both 
-const ops = {
-    plus: function (a, b) { return a + b }, minus: function (a, b) { return a - b }, times: function (a, b) { return a * b }, by: function (a, b) { return a / b },
-}
-
-// function solutionCalculation(...input) {
-//     let l = input.length
-//     if (l = 0) {
-//         console.log('nothing to math on!')
-//     } else {
-//         // for i of input
-//         // screenNum.innerText = (input[0])
-//     }
-// };
-
+// ============================================================ //
+//numbers event listener 
 for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener('click', function (e) {
         if (operandStatus.lastActive === false) {
-            console.log(`number ${i} & false`);
+            console.log(`number ${i}`);
+            console.log(`lastActive = false`);
+
             operandStatusUpdater();
+            numberStatusUpdater(69);
+            numberStatus.lastActiveIndex = i;
             if (workingMemory.length > 0) {
                 workingMemory.unshift(workingMemory[0] + numbers[i].innerText)
             } else {
@@ -121,59 +105,113 @@ for (let i = 0; i < numbers.length; i++) {
             screenNum.innerText = workingMemory[0];
         } else {
             workingMemory.length = 0;
-            console.log(`number ${i} & true`);
+            console.log(`number ${i}`);
+            console.log(`lastActive = true`);
+
             operandStatusUpdater();
+            numberStatusUpdater(69);
+            numberStatus.lastActiveIndex = i;
             workingMemory.unshift(numbers[i].innerText)
             screenNum.innerText = workingMemory[0];
         }
     });
 };
+//operator event listener
 for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', function (e) {
         if (operandStatus.firstTime === true) {
-            console.log(`operator ${i} & firstTime = true`);
+            console.log(`operator ${i}`);
+            console.log(`operator firstTime = true`);
+
             operandStatusUpdater(69);
-            operandStatus.lastActiveOperandNum = i;
+            numberStatusUpdater();
+            operandStatus.lastActiveIndex = i;
             operandStatus.firstTime = false;
+
             if (workingMemory.length > 0) {
                 equation.push(parseInt(workingMemory[0]))
                 equation.push(operand[i])
-                workingEquation.num1 = workingMemory[0]
-            } else { console.log(`nothing to ${operand[i]} by`) };
+                workingEquation.num1 = parseInt(workingMemory[0])
+            } else { console.log(`nothing to ${operand[i]} by & firstTime = true`) };
 
         } else {
-            console.log(`operator ${i} & firstTime = false`);
-            operandStatusUpdater(69);
-            operandStatus.lastActiveOperandNum = i;
-            operandStatus.firstTime = false
-            solve(op);
+            if (numberStatus.lastActive === true) {
+                console.log(`operator ${i}`);
+                console.log(`number last active = true`);
 
-            if (workingMemory.length > 0) {
-                equation.push(parseInt(workingMemory[0]))
-                equation.push(operand[i])
-                workingEquation.num2 = workingMemory[0];
-                (workingEquation.num1)(operand[i])(workingEquation.num2) = (workingEquation.ans); //errors out
+                operandStatusUpdater(69);
+                numberStatusUpdater();
+                operandStatus.lastActiveIndex = i;
+                operandStatus.firstTime = false;
 
-                workingEquation.num1 = workingEquation.ans;
-                workingEquation.num2 = '';
-            } else { console.log(`nothing to ${operand[i]} by`) };
+                if (workingMemory.length > 0) {
+                    equation.push(parseInt(workingMemory[0]))
+                    equation.push('=')
+                    equation.push()
+                    equation.push(operand[i]);
+                    workingEquation.num2 === parseInt(workingMemory[0]);
+                    screenNum.innerText && workingEquation.ans === solve();
+                    workingEquation.num1 === workingEquation.ans;
+                    workingEquation.num2 === '';
+                    workingMemory.length = 0;
+                } else { console.log(`nothing to ${operand[i]} by & firstTime = false`) };
 
+            } else {
+                console.log('error! operator has already been pressed! Please input a number.')
+            }
         }
     })
 };
-del.addEventListener('click', function (e) {
-    console.log('del')
-});
-res.addEventListener('click', function (e) {
-    console.log('res')
-});
+// del.addEventListener('click', function (e) {
+//     console.log('del')
+// });
+// res.addEventListener('click', function (e) {
+//     console.log('res')
+// });
 // decimal.addEventListener('click', function (e) {
 //     console.log('decimal')
 // });
+
+//equals button event listener
 equals.addEventListener('click', function (e) {
-    console.log('equals')
-    equation.push(parseInt(workingMemory[0]))
-    workingMemory.length = 0;
-    // solutionCalculation(equation);
-    solve(eq);
+    if (operandStatus.firstTime === true) {
+        console.log('error! you need an operator')
+    } else if (numberStatus.lastActive === true) {
+        console.log('equals')
+        equation.push(parseInt(workingMemory[0]))
+        workingMemory.length = 0;
+        // solutionCalculation(equation);
+        solve();
+    } else {
+
+    }
 });
+
+
+
+
+// just in case i need this
+// function solve(e) {
+//     if (e === 'op') {
+//         if (operandStatus.lastActiveIndex === 0) {
+//             return plus(workingEquation.num1, workingEquation.num2)
+//         } else if (operandStatus.lastActiveIndex === 1) {
+//             return minus(workingEquation.num1, workingEquation.num2)
+//         } else if (operandStatus.lastActiveIndex === 2) {
+//             return by(workingEquation.num1, workingEquation.num2)
+//         } else if (operandStatus.lastActiveIndex === 3) {
+//             return times(workingEquation.num1, workingEquation.num2)
+//         }
+//     } else if (e === 'eq') {
+//         if (operandStatus.lastActiveIndex === 0) {
+//             return plus(workingEquation.num1, workingEquation.num2)
+//         } else if (operandStatus.lastActiveIndex === 1) {
+//             return minus(workingEquation.num1, workingEquation.num2)
+//         } else if (operandStatus.lastActiveIndex === 2) {
+//             return by(workingEquation.num1, workingEquation.num2)
+//         } else if (operandStatus.lastActiveIndex === 3) {
+//             return times(workingEquation.num1, workingEquation.num2)
+//         }
+//     } else {
+//         return console.log('solve() input not validated')
+//     }
