@@ -57,12 +57,42 @@ function plus(a, b) {
 function minus(a, b) {
     return a - b;
 }
-function times(a, b) {
-    return a * b;
-}
 function by(a, b) {
     return a / b;
 }
+function times(a, b) {
+    return a * b;
+}
+
+function solve(e) {
+    if (e === op) {
+        if (operandStatus.lastActiveOperandNum === 0) {
+            return plus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 1) {
+            return minus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 2) {
+            return by(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 3) {
+            return times(workingEquation.num1, workingEquation.num2)
+        }
+    } else if (e === eq) {
+        if (operandStatus.lastActiveOperandNum === 0) {
+            return plus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 1) {
+            return minus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 2) {
+            return by(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 3) {
+            return times(workingEquation.num1, workingEquation.num2)
+        }
+    } else {
+        return console.log('solve() input not validated')
+    }
+
+}
+
+const ops1 = [plus(), minus(), times(), by()]
+
 // see which works, above, below, or both 
 const ops = {
     plus: function (a, b) { return a + b }, minus: function (a, b) { return a - b }, times: function (a, b) { return a * b }, by: function (a, b) { return a / b },
@@ -116,12 +146,14 @@ for (let i = 0; i < operator.length; i++) {
             operandStatusUpdater(69);
             operandStatus.lastActiveOperandNum = i;
             operandStatus.firstTime = false
+            solve(op);
 
             if (workingMemory.length > 0) {
                 equation.push(parseInt(workingMemory[0]))
                 equation.push(operand[i])
                 workingEquation.num2 = workingMemory[0];
                 (workingEquation.num1)(operand[i])(workingEquation.num2) = (workingEquation.ans); //errors out
+
                 workingEquation.num1 = workingEquation.ans;
                 workingEquation.num2 = '';
             } else { console.log(`nothing to ${operand[i]} by`) };
@@ -143,4 +175,5 @@ equals.addEventListener('click', function (e) {
     equation.push(parseInt(workingMemory[0]))
     workingMemory.length = 0;
     // solutionCalculation(equation);
+    solve(eq);
 });
