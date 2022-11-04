@@ -37,7 +37,7 @@ const workingMemory = [];
 let workingEquation = { num1: '', num2: '', ans: '' }
 const equation = [];
 // const solution = [];
-const operandStatus = { lastActive: false, lastActiveIndex: -1, firstTime: true };
+const operandStatus = { lastActive: false, lastActiveIndex: -1, beforeLastActiveIndex: -1, firstTime: true };
 const numberStatus = { lastActive: false, lastActiveIndex: -1, firstTime: true };
 // let num1 = '';
 // let num2 = '';
@@ -74,18 +74,31 @@ function times(a, b) {
     return a * b;
 }
 
-function solve() {
-    if (operandStatus.lastActiveIndex === 0) {
-        return plus(workingEquation.num1, workingEquation.num2)
-    } else if (operandStatus.lastActiveIndex === 1) {
-        return minus(workingEquation.num1, workingEquation.num2)
-    } else if (operandStatus.lastActiveIndex === 2) {
-        return by(workingEquation.num1, workingEquation.num2)
-    } else if (operandStatus.lastActiveIndex === 3) {
-        return times(workingEquation.num1, workingEquation.num2)
+function solve(e) {
+    if (e === 'op') {
+        if (operandStatus.beforeLastActiveOperandNum === 0) {
+            return plus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.beforeLastActiveOperandNum === 1) {
+            return minus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.beforeLastActiveOperandNum === 2) {
+            return by(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.beforeLastActiveOperandNum === 3) {
+            return times(workingEquation.num1, workingEquation.num2)
+        }
+    } else if (e === 'eq') {
+        if (operandStatus.lastActiveOperandNum === 0) {
+            return plus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 1) {
+            return minus(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 2) {
+            return by(workingEquation.num1, workingEquation.num2)
+        } else if (operandStatus.lastActiveOperandNum === 3) {
+            return times(workingEquation.num1, workingEquation.num2)
+        }
+    } else {
+        return console.log('solve() input not validated')
     }
-}
-
+};
 // ============================================================ //
 //numbers event listener 
 for (let i = 0; i < numbers.length; i++) {
@@ -129,9 +142,9 @@ for (let i = 0; i < operator.length; i++) {
             operandStatus.firstTime = false;
 
             if (workingMemory.length > 0) {
-                equation.push(parseInt(workingMemory[0]))
-                equation.push(operand[i])
-                workingEquation.num1 = parseInt(workingMemory[0])
+                equation.push(parseInt(workingMemory[0]));
+                equation.push(operand[i]);
+                workingEquation.num1 = parseInt(workingMemory[0]);
             } else { console.log(`nothing to ${operand[i]} by & firstTime = true`) };
 
         } else {
@@ -141,16 +154,17 @@ for (let i = 0; i < operator.length; i++) {
 
                 operandStatusUpdater(69);
                 numberStatusUpdater();
+                operandStatus.beforeLastActiveIndex = operandStatus.lastActiveIndex
                 operandStatus.lastActiveIndex = i;
                 operandStatus.firstTime = false;
 
                 if (workingMemory.length > 0) {
-                    equation.push(parseInt(workingMemory[0]))
-                    equation.push('=')
-                    equation.push()
-                    equation.push(operand[i]);
+                    equation.push(parseInt(workingMemory[0]));
+                    equation.push('=');
                     workingEquation.num2 === parseInt(workingMemory[0]);
-                    screenNum.innerText && workingEquation.ans === solve();
+                    screenNum.innerText && workingEquation.ans === solve('op');
+                    equation.push(workingEquation.ans);
+                    equation.push(operand[i]);
                     workingEquation.num1 === workingEquation.ans;
                     workingEquation.num2 === '';
                     workingMemory.length = 0;
@@ -180,38 +194,8 @@ equals.addEventListener('click', function (e) {
         console.log('equals')
         equation.push(parseInt(workingMemory[0]))
         workingMemory.length = 0;
-        // solutionCalculation(equation);
-        solve();
+        solve('eq');
     } else {
-
+        console.log('equals - else');
     }
 });
-
-
-
-
-// just in case i need this
-// function solve(e) {
-//     if (e === 'op') {
-//         if (operandStatus.lastActiveIndex === 0) {
-//             return plus(workingEquation.num1, workingEquation.num2)
-//         } else if (operandStatus.lastActiveIndex === 1) {
-//             return minus(workingEquation.num1, workingEquation.num2)
-//         } else if (operandStatus.lastActiveIndex === 2) {
-//             return by(workingEquation.num1, workingEquation.num2)
-//         } else if (operandStatus.lastActiveIndex === 3) {
-//             return times(workingEquation.num1, workingEquation.num2)
-//         }
-//     } else if (e === 'eq') {
-//         if (operandStatus.lastActiveIndex === 0) {
-//             return plus(workingEquation.num1, workingEquation.num2)
-//         } else if (operandStatus.lastActiveIndex === 1) {
-//             return minus(workingEquation.num1, workingEquation.num2)
-//         } else if (operandStatus.lastActiveIndex === 2) {
-//             return by(workingEquation.num1, workingEquation.num2)
-//         } else if (operandStatus.lastActiveIndex === 3) {
-//             return times(workingEquation.num1, workingEquation.num2)
-//         }
-//     } else {
-//         return console.log('solve() input not validated')
-//     }
