@@ -76,23 +76,15 @@ function times(a, b) {
 
 function solve(e) {
     if (e === 'op') {
-        if (operandStatus.beforeLastActiveOperandNum === 0) {
-            return plus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.beforeLastActiveOperandNum === 1) {
-            return minus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.beforeLastActiveOperandNum === 2) {
-            return by(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.beforeLastActiveOperandNum === 3) {
-            return times(workingEquation.num1, workingEquation.num2)
-        }
+
     } else if (e === 'eq') {
-        if (operandStatus.lastActiveOperandNum === 0) {
+        if (operandStatus.lastActiveIndex === 0) {
             return plus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 1) {
+        } else if (operandStatus.lastActiveIndex === 1) {
             return minus(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 2) {
+        } else if (operandStatus.lastActiveIndex === 2) {
             return by(workingEquation.num1, workingEquation.num2)
-        } else if (operandStatus.lastActiveOperandNum === 3) {
+        } else if (operandStatus.lastActiveIndex === 3) {
             return times(workingEquation.num1, workingEquation.num2)
         }
     } else {
@@ -162,13 +154,21 @@ for (let i = 0; i < operator.length; i++) {
                     equation.unshift(parseInt(workingMemory[0]));
                     equation.unshift('=');
                     workingEquation.num2 = equation[1];
-                    screenNum.innerText && workingEquation.ans === solve('op');
+                    if (operandStatus.beforeLastActiveIndex === 0) {
+                        workingEquation.ans = plus(workingEquation.num1, workingEquation.num2)
+                    } else if (operandStatus.beforeLastActiveIndex === 1) {
+                        workingEquation.ans = minus(workingEquation.num1, workingEquation.num2)
+                    } else if (operandStatus.beforeLastActiveIndex === 2) {
+                        workingEquation.ans = by(workingEquation.num1, workingEquation.num2)
+                    } else if (operandStatus.beforeLastActiveIndex === 3) {
+                        workingEquation.ans = times(workingEquation.num1, workingEquation.num2)
+                    }
                     equation.unshift(workingEquation.ans);
                     equation.unshift(operand[i]);
-                    workingEquation.num1 === workingEquation.ans;
-                    workingEquation.num2 === '';
+                    workingEquation.ans === workingEquation.num1;
+                    workingEquation.num2 && workingEquation.ans === '';
                     workingMemory.length = 0;
-                    console.log('why doesnt this work');
+                    console.log('this works');
                 } else { console.log(`nothing to ${operand[i]} by & firstTime = false`) };
 
             } else {
