@@ -142,9 +142,9 @@ for (let i = 0; i < operator.length; i++) {
             operandStatus.firstTime = false;
 
             if (workingMemory.length > 0) {
-                equation.push(parseInt(workingMemory[0]));
-                equation.push(operand[i]);
-                workingEquation.num1 = parseInt(workingMemory[0]);
+                equation.unshift(parseInt(workingMemory[0]));
+                equation.unshift(operand[i]);
+                workingEquation.num1 = equation[1];
             } else { console.log(`nothing to ${operand[i]} by & firstTime = true`) };
 
         } else {
@@ -159,15 +159,16 @@ for (let i = 0; i < operator.length; i++) {
                 operandStatus.firstTime = false;
 
                 if (workingMemory.length > 0) {
-                    equation.push(parseInt(workingMemory[0]));
-                    equation.push('=');
-                    workingEquation.num2 === parseInt(workingMemory[0]);
+                    equation.unshift(parseInt(workingMemory[0]));
+                    equation.unshift('=');
+                    workingEquation.num2 = equation[1];
                     screenNum.innerText && workingEquation.ans === solve('op');
-                    equation.push(workingEquation.ans);
-                    equation.push(operand[i]);
+                    equation.unshift(workingEquation.ans);
+                    equation.unshift(operand[i]);
                     workingEquation.num1 === workingEquation.ans;
                     workingEquation.num2 === '';
                     workingMemory.length = 0;
+                    console.log('why doesnt this work');
                 } else { console.log(`nothing to ${operand[i]} by & firstTime = false`) };
 
             } else {
@@ -192,7 +193,7 @@ equals.addEventListener('click', function (e) {
         console.log('error! you need an operator')
     } else if (numberStatus.lastActive === true) {
         console.log('equals')
-        equation.push(parseInt(workingMemory[0]))
+        equation.unshift(parseInt(workingMemory[0]))
         workingMemory.length = 0;
         solve('eq');
     } else {
