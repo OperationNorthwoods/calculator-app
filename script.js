@@ -155,13 +155,20 @@ for (let i = 0; i < operator.length; i++) {
                     equation.unshift('=');
                     workingEquation.num2 = equation[1];
                     if (operandStatus.beforeLastActiveIndex === 0) {
-                        workingEquation.ans = plus(workingEquation.num1, workingEquation.num2)
+                        workingEquation.ans = plus(workingEquation.num1, workingEquation.num2);
+                        screenNum.innerText = workingEquation.ans;
                     } else if (operandStatus.beforeLastActiveIndex === 1) {
-                        workingEquation.ans = minus(workingEquation.num1, workingEquation.num2)
+                        workingEquation.ans = minus(workingEquation.num1, workingEquation.num2);
+                        screenNum.innerText = workingEquation.ans;
+
                     } else if (operandStatus.beforeLastActiveIndex === 2) {
-                        workingEquation.ans = by(workingEquation.num1, workingEquation.num2)
+                        workingEquation.ans = by(workingEquation.num1, workingEquation.num2);
+                        screenNum.innerText = workingEquation.ans;
+
                     } else if (operandStatus.beforeLastActiveIndex === 3) {
-                        workingEquation.ans = times(workingEquation.num1, workingEquation.num2)
+                        workingEquation.ans = times(workingEquation.num1, workingEquation.num2);
+                        screenNum.innerText = workingEquation.ans;
+
                     }
                     equation.unshift(workingEquation.ans);
                     equation.unshift(operand[i]);
