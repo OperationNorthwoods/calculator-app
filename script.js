@@ -21,12 +21,12 @@ theme3.addEventListener('click', function (e) {
 // premade arrays
 
 const numgrid = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0']; // in order from top left button
-const operand = ['+', '-', '/', '*'];
+const operandArr = ['+', '-', '/', '*'];
 
 // ============================================================ //
 
 const numbers = document.querySelectorAll('.number');
-const operator = document.querySelectorAll('.operator');
+const operand = document.querySelectorAll('.operand');
 const delres = document.querySelectorAll('.delres');
 const del = document.querySelector('#del');
 const res = document.querySelector('#res');
@@ -121,12 +121,12 @@ for (let i = 0; i < numbers.length; i++) {
         }
     });
 };
-//operator event listener
-for (let i = 0; i < operator.length; i++) {
-    operator[i].addEventListener('click', function (e) {
+//operand event listener
+for (let i = 0; i < operand.length; i++) {
+    operand[i].addEventListener('click', function (e) {
         if (operandStatus.firstTime === true) {
-            console.log(`operator ${i}`);
-            console.log(`operator firstTime = true`);
+            console.log(`operand ${i}`);
+            console.log(`operand firstTime = true`);
 
             operandStatusUpdater(69);
             numberStatusUpdater();
@@ -135,13 +135,13 @@ for (let i = 0; i < operator.length; i++) {
 
             if (workingMemory.length > 0) {
                 equation.unshift(parseInt(workingMemory[0]));
-                equation.unshift(operand[i]);
+                equation.unshift(operandArr[i]);
                 workingEquation.num1 = equation[1];
-            } else { console.log(`nothing to ${operand[i]} by & firstTime = true`) };
+            } else { console.log(`nothing to ${operandArr[i]} by & firstTime = true`) };
 
         } else {
             if (numberStatus.lastActive === true) {
-                console.log(`operator ${i}`);
+                console.log(`operand ${i}`);
                 console.log(`number last active = true`);
 
                 operandStatusUpdater(69);
@@ -171,33 +171,39 @@ for (let i = 0; i < operator.length; i++) {
 
                     }
                     equation.unshift(workingEquation.ans);
-                    equation.unshift(operand[i]);
+                    equation.unshift(operandArr[i]);
                     workingEquation.ans === workingEquation.num1;
                     workingEquation.num2 && workingEquation.ans === '';
                     workingMemory.length = 0;
                     console.log('this works');
-                } else { console.log(`nothing to ${operand[i]} by & firstTime = false`) };
+                } else { console.log(`nothing to ${operandArr[i]} by & firstTime = false`) };
 
             } else {
-                console.log('error! operator has already been pressed! Please input a number.')
+                console.log('error! operand has already been pressed! Please input a number.')
             }
         }
     })
 };
-// del.addEventListener('click', function (e) {
-//     console.log('del')
-// });
-// res.addEventListener('click', function (e) {
-//     console.log('res')
-// });
-// decimal.addEventListener('click', function (e) {
-//     console.log('decimal')
-// });
+del.addEventListener('click', function (e) {
+    console.log('del')
+    workingMemory.shift();
+    screenNum.innerText = workingMemory[0];
+});
+res.addEventListener('click', function (e) {
+    console.log('res')
+    workingMemory.length = 0;
+    equation.length = 0;
+    screenNum.innerText = 0;
+
+});
+decimal.addEventListener('click', function (e) {
+    console.log('decimal')
+});
 
 //equals button event listener
 equals.addEventListener('click', function (e) {
     if (operandStatus.firstTime === true) {
-        console.log('error! you need an operator')
+        console.log('error! you need an operand')
     } else if (numberStatus.lastActive === true) {
         console.log('equals')
         equation.unshift(parseInt(workingMemory[0]))
